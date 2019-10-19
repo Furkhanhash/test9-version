@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>123</modelVersion>
+	<artifactId>test</artifactId>
+	<name>test</name>
+	<description>test</description>
+	<packaging>war</packaging>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.3.5.RELEASE</version>
+	</parent>
+
+	<properties>
+		<start-class>com.test.auth.WebApplication</start-class>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring</artifactId>
+    <version>2.5.6.SEC03</version>
+</dependency>
+
+
+	</dependencies>
+	<build>
+	<finalName>test</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+					<groupId>org.codehaus.cargo</groupId>
+					<artifactId>cargo-maven2-plugin</artifactId>
+					<version>1.4.13</version>
+					<configuration>
+						<!-- Container configuration -->
+						<container>
+							<containerId>tomcat8x</containerId>
+							<type>remote</type>
+						</container>
+						<configuration>
+							<type>runtime</type>
+							<properties>
+								<cargo.remote.username>tomcat</cargo.remote.username>
+								<cargo.remote.password>tomcat</cargo.remote.password>
+								<cargo.hostname>10.128.10.231</cargo.hostname>
+								<cargo.protocol>http</cargo.protocol>
+								<cargo.servlet.port>8080</cargo.servlet.port>
+							</properties>
+						</configuration>
+						<deployables>
+							<deployable>
+								<groupId>${project.groupId}</groupId>
+								<artifactId>${project.artifactId}</artifactId>
+								<type>war</type>
+								<properties>
+									<context>/test</context>
+								</properties>
+							</deployable>
+						</deployables>
+					</configuration>
+				</plugin>
+		</plugins>
+	</build>
+</project>
