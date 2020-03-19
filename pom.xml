@@ -162,11 +162,7 @@
 					<configuration>
 						<type>runtime</type>
 						<properties>
-							<cargo.remote.username>tomcat</cargo.remote.username>
-							<cargo.remote.password>tomcat</cargo.remote.password>
-							<cargo.hostname>10.128.10.231</cargo.hostname>
-							<cargo.protocol>http</cargo.protocol>
-							<cargo.servlet.port>8080</cargo.servlet.port>
+							
 						</properties>
 					</configuration>
 					<deployables>
